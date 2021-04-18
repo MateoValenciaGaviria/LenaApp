@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/btn_login_fb"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
@@ -28,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_bg"
@@ -59,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito_bold"
             android:shadowColor="@color/black"
             android:shadowDx="2"
             android:shadowDy="2"
@@ -78,6 +78,7 @@
             android:layout_marginTop="40dp"
             android:alpha=".8"
             android:background="@drawable/btn_register"
+            android:fontFamily="@font/nunito_bold"
             android:paddingLeft="50dp"
             android:paddingRight="50dp"
             android:text="Iniciar sesión"
@@ -96,6 +97,7 @@
             android:drawableStart="@drawable/ic_user"
             android:drawablePadding="10dp"
             android:ems="10"
+            android:fontFamily="@font/nunito_semibold"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:text="Usuario"
@@ -115,6 +117,7 @@
             android:drawableStart="@drawable/ic_password"
             android:drawablePadding="10dp"
             android:ems="10"
+            android:fontFamily="@font/nunito_semibold"
             android:inputType="textPersonName"
             android:paddingStart="20dp"
             android:text="Contraseña"
@@ -139,7 +142,7 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/nunito_semibold"
                 android:text="¿Aún no tienes cuenta? "
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -150,7 +153,7 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
+                android:fontFamily="@font/nunito_semibold"
                 android:text="@string/Registrate"
                 android:textColor="@color/light_green" />
         </LinearLayout>
@@ -160,7 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:fontFamily="sans-serif-black"
+            android:fontFamily="@font/nunito_semibold"
             android:text="o"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +178,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/g_btn"
             android:drawableLeft="@drawable/ic_google"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/nunito_bold"
             android:paddingStart="16dp"
             android:text="SEGUIR CON GOOGLE"
             android:textAlignment="center"
@@ -192,7 +195,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/fb_btn"
             android:drawableLeft="@drawable/ic_facebook"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="@font/nunito_bold"
             android:paddingStart="16dp"
             android:text="SEGUIR CON FACEBOOK"
             android:textAlignment="center"
