@@ -3,4 +3,5 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="Registrate"><u>¡Registrate!</u></string>
+    <string name="Politica_de_privacidad">Al continuar, aceptas las <b>Condiciones del <br/> servicio</b> y la <b>Política de privacidad</b> de Haus.</string>
 </resources>
