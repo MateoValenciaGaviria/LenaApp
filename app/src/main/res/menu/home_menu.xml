@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_home"
+        android:title="Inicio" />
+    <item
+        android:id="@+id/statistics"
+        android:icon="@drawable/ic_stadistics"
+        android:title="Estadísticas" />
+    <item
+        android:id="@+id/plants_care"
+        android:icon="@drawable/ic_plant"
+        android:title="Cuidado" />
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/ic_person"
+        android:title="Perfil" />
+</menu>
