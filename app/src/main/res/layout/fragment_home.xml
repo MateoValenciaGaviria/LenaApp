@@ -75,12 +75,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view2" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_fragment_search_container"
         android:layout_width="0dp"
-        android:layout_height="582dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="@+id/home_fragment_background"
@@ -88,13 +89,13 @@
         app:layout_constraintTop_toBottomOf="@+id/home_fragment_top_container">
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/btn_search"
             style="@style/searchInput"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="26dp"
             android:background="@drawable/search_input"
-            android:drawableRight="@drawable/search_btn"
+            android:drawableEnd="@drawable/search_btn"
             android:ems="10"
             android:hint="Búsqueda de paisaje..."
             android:inputType="textPersonName"
@@ -105,5 +106,97 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="7dp"
+            android:fontFamily="@font/nunito_extrabold"
+            android:text="MIS TEMAS"
+            android:textColor="@color/dark_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_search" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_editThemes"
+            style="@style/edit_theme_btn"
+            android:layout_width="63dp"
+            android:layout_height="28dp"
+            android:layout_marginBottom="7dp"
+            android:background="@drawable/btn_edit_themes"
+            android:includeFontPadding="false"
+            android:stateListAnimator="@null"
+            android:text="Editar"
+            android:textAllCaps="false"
+            android:textColor="@color/main_orange"
+            app:layout_constraintBottom_toBottomOf="@+id/textView8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/user_themes_horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/home_white_shape"
+        app:layout_constraintEnd_toEndOf="@+id/home_fragment_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_fragment_search_container" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/home_fragment_cards_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/home_fragment_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_themes_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/nunito_black"
+                android:paddingTop="14dp"
+                android:text="NEW"
+                android:textColor="@color/dark_green" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/new_theme_individual_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="20dp"
+                tools:src="@drawable/theme_one"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/new_themes_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
