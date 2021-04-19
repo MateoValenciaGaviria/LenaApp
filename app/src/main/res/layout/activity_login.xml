@@ -55,8 +55,9 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/nunito_bold"
-            android:shadowColor="@color/black"
+            android:shadowColor="@color/transparent_bg_black"
             android:shadowDx="2"
             android:shadowDy="2"
             android:shadowRadius="2"
@@ -171,7 +172,7 @@
             app:layout_constraintTop_toBottomOf="@+id/register_LN" />
 
         <Button
-            android:id="@+id/btn_g"
+            android:id="@+id/btn_login_google"
             style="@style/g_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -180,6 +181,9 @@
             android:drawableLeft="@drawable/ic_google"
             android:fontFamily="@font/nunito_bold"
             android:paddingStart="16dp"
+            android:paddingTop="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
             android:text="SEGUIR CON GOOGLE"
             android:textAlignment="center"
             android:textColor="#6B7073"
@@ -187,24 +191,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-        <Button
-            android:id="@+id/button2"
-            style="@style/fb_btn"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_login_facebook"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/fb_btn"
+            android:background="@drawable/facebook_btn"
             android:drawableLeft="@drawable/ic_facebook"
             android:fontFamily="@font/nunito_bold"
             android:paddingStart="16dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="0dp"
             android:text="SEGUIR CON FACEBOOK"
             android:textAlignment="center"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_g" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_login_google" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
