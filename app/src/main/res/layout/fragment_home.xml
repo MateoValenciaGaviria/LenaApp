@@ -61,6 +61,7 @@
             android:id="@+id/view2"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:alpha=".5"
             android:background="@drawable/secondary_bg_gradient"
             app:layout_constraintBottom_toTopOf="@+id/view"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,6 +72,7 @@
             android:id="@+id/view"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:alpha=".5"
             android:background="@drawable/secondary_bg_gradient"
             android:rotation="180"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -110,35 +112,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="17dp"
-            android:layout_marginBottom="7dp"
-            android:fontFamily="@font/nunito_extrabold"
-            android:text="MIS TEMAS"
-            android:textColor="@color/dark_green"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_search" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_editThemes"
-            style="@style/edit_theme_btn"
-            android:layout_width="63dp"
-            android:layout_height="28dp"
-            android:layout_marginBottom="7dp"
-            android:background="@drawable/btn_edit_themes"
-            android:includeFontPadding="false"
-            android:stateListAnimator="@null"
-            android:text="Editar"
-            android:textAllCaps="false"
-            android:textColor="@color/main_orange"
-            app:layout_constraintBottom_toBottomOf="@+id/textView8"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textView8" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
@@ -157,27 +130,65 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <HorizontalScrollView
-                android:id="@+id/scrollviewtest1"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="157dp"
-                android:scrollbarSize="0dp">
+                android:layout_height="wrap_content">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textView8"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingStart="20dp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/nunito_extrabold"
+                    android:text="MIS TEMAS"
+                    android:textColor="@color/dark_green"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="match_parent"
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_editThemes"
+                    style="@style/edit_theme_btn"
+                    android:layout_width="63dp"
+                    android:layout_height="28dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/btn_edit_themes"
+                    android:includeFontPadding="false"
+                    android:stateListAnimator="@null"
+                    android:text="Editar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/main_orange"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView8"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+                <HorizontalScrollView
+                    android:id="@+id/scrollviewtest1"
+                    android:layout_width="match_parent"
+                    android:layout_height="157dp"
+                    android:layout_marginTop="10dp"
+                    android:scrollbarSize="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView8">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerInside"
-                        android:src="@drawable/theme_two" />
-                </LinearLayout>
-            </HorizontalScrollView>
+                        android:orientation="vertical"
+                        android:paddingStart="20dp">
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"
+                            android:src="@drawable/theme_two" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/user_themes_horizontal"
