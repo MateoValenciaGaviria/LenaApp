@@ -54,7 +54,6 @@
     <style name="searchInput" parent="Widget.AppCompat.EditText">
         <item name="background">@drawable/search_input</item>
         <item name="android:textSize">14sp</item>
-        <item name="fontFamily">@font/nunito_regular</item>
     </style>
 
     <style name="facebook_btn" parent="Widget.AppCompat.Button">
