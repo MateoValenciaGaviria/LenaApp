@@ -12,9 +12,9 @@ import android.widget.LinearLayout;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button loginBtn;
+    private AppCompatButton loginBtn;
     private AppCompatButton loginFacebookBtn;
-    private Button loginGoogleBtn;
+    private AppCompatButton loginGoogleBtn;
     private EditText userET;
     private EditText passwordET;
     private LinearLayout registerLN;

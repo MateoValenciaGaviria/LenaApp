@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/home_fragment_top_container"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:background="@color/dark_green"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -217,17 +217,16 @@
 
                         <ImageView
                             android:id="@+id/imageView5"
-                            android:layout_width="match_parent"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:orientation="vertical"
-                            android:paddingTop="20dp"
-                            android:scaleType="centerInside"
+                            android:src="@drawable/theme_one"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            tools:src="@drawable/theme_one" />
+                            android:adjustViewBounds="true"
+                            android:paddingTop="10dp"
+                            android:scaleType="centerInside"/>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
