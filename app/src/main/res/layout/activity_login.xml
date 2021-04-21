@@ -154,9 +154,9 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/nunito_semibold"
+                android:fontFamily="@font/nunito_black"
                 android:text="@string/Registrate"
-                android:textColor="@color/light_green" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <TextView
