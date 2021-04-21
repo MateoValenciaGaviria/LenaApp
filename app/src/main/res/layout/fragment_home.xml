@@ -120,6 +120,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
         android:scrollbarSize="0dp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="@+id/home_fragment_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -177,7 +178,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:paddingStart="20dp">
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp">
 
                         <ImageView
                             android:id="@+id/imageView6"
@@ -230,14 +232,14 @@
                             android:id="@+id/imageView5"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:adjustViewBounds="true"
+                            android:paddingTop="10dp"
+                            android:scaleType="centerInside"
                             android:src="@drawable/theme_one"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            android:adjustViewBounds="true"
-                            android:paddingTop="10dp"
-                            android:scaleType="centerInside"/>
+                            app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
