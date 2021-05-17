@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private AppCompatButton loginBtn;
@@ -18,6 +20,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText userET;
     private EditText passwordET;
     private LinearLayout registerLN;
+
+    private FirebaseFirestore firestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
