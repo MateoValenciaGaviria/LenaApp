@@ -7,8 +7,23 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.lena.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ProfileFragment extends Fragment {
+
+    private View root;
+
+    private User myUser;
+    private TextView userName;
+
+    private FirebaseFirestore firestore;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -25,6 +40,18 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        root = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        firestore = FirebaseFirestore.getInstance();
+
+        userName = root.findViewById(R.id.userNameTV);
+
+        userName.setText(myUser.getUserName());
+
+        return root;
+    }
+
+    public void setUser(User user){
+        this.myUser = user;
     }
 }

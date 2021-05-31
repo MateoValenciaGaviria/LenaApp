@@ -86,7 +86,7 @@
             app:layout_constraintTop_toBottomOf="@+id/passwordET" />
 
         <EditText
-            android:id="@+id/userET"
+            android:id="@+id/emailET"
             style="@style/EditTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -96,8 +96,8 @@
             android:drawablePadding="10dp"
             android:ems="10"
             android:fontFamily="@font/nunito_semibold"
-            android:hint="Usuario"
-            android:inputType="textPersonName"
+            android:hint="Correo"
+            android:inputType="textWebEmailAddress"
             android:paddingStart="20dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
@@ -125,7 +125,7 @@
             android:textColorHint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/userET" />
+            app:layout_constraintTop_toBottomOf="@+id/emailET" />
 
         <LinearLayout
             android:id="@+id/register_LN"

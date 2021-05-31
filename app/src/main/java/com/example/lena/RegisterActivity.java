@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,27 +52,35 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btn_register:
-                auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(
-                        task -> {
-                            if(task.isSuccessful()){
-                                FirebaseUser fireBaseUser = auth.getCurrentUser();
-                                User user = new User(
-                                        fireBaseUser.getUid(),
-                                        userName.getText().toString(),
-                                        email.getText().toString()
-                                );
-                                firestore.collection("users").document(user.getId()).set(user).addOnCompleteListener(
-                                        firestoreTask -> {
-                                            if(firestoreTask.isSuccessful()){
-                                                sendVerification();
-                                            }
-                                        }
-                                );
-                            }else{
-                                Toast.makeText(this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            }
-                        }
-                );
+                if(!userName.getText().toString().isEmpty() && !email.getText().toString().isEmpty() && !password.getText().toString().isEmpty() && !confirmPassword.getText().toString().isEmpty()){
+                    if(password.getText().toString().equals(confirmPassword.getText().toString())){
+                        auth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(
+                                task -> {
+                                    if(task.isSuccessful()){
+                                        FirebaseUser fireBaseUser = auth.getCurrentUser();
+                                        User user = new User(
+                                                fireBaseUser.getUid(),
+                                                userName.getText().toString(),
+                                                email.getText().toString()
+                                        );
+                                        firestore.collection("users").document(user.getId()).set(user).addOnCompleteListener(
+                                                firestoreTask -> {
+                                                    if(firestoreTask.isSuccessful()){
+                                                        sendVerification();
+                                                    }
+                                                }
+                                        );
+                                    }else{
+                                        Toast.makeText(this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                        );
+                    }else{
+                        Toast.makeText(this, "Las contraseñas no coinciden", Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(this, "Debes llenar todos los campos solicitados para tu registro", Toast.LENGTH_LONG).show();
+                }
                 break;
             case R.id.registerBackBtn:
                 Intent i = new Intent(this, LoginActivity.class);
