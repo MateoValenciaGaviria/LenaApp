@@ -23,6 +23,7 @@ public class ProfileFragment extends Fragment {
     private User myUser;
     private TextView userName;
 
+    private FirebaseAuth auth;
     private FirebaseFirestore firestore;
 
     public ProfileFragment() {
@@ -43,12 +44,29 @@ public class ProfileFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_profile, container, false);
 
         firestore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         userName = root.findViewById(R.id.userNameTV);
 
         userName.setText(myUser.getUserName());
 
         return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        //resolverMyUser();
+    }
+
+    private void resolverMyUser() {
+        FirebaseUser fbuser = auth.getCurrentUser();
+        firestore.collection("users").document(fbuser.getUid()).get().addOnCompleteListener(
+                dbusertask -> {
+                    DocumentSnapshot snapshot = dbusertask.getResult();
+                    myUser = snapshot.toObject(User.class);
+                }
+        );
     }
 
     public void setUser(User user){

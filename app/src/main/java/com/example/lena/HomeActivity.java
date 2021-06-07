@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        
+
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
@@ -43,18 +43,12 @@ public class HomeActivity extends AppCompatActivity {
             return;
         }
 
-        myUser = (User) getIntent().getExtras().getSerializable("myUser");
-        Toast.makeText(this, "Bienvenido "+myUser.getUserName()+"!", Toast.LENGTH_LONG).show();
-
         navigator = findViewById(R.id.navigator);
 
         homeFragment = HomeFragment.newInstance();
         statisticsFragment = StatisticsFragment.newInstance();
         plantsCareFragment = PlantsCareFragment.newInstance();
         profileFragment = ProfileFragment.newInstance();
-
-        profileFragment.setUser(myUser);
-        statisticsFragment.setUser(myUser);
 
         showFragment(homeFragment);
 
@@ -76,6 +70,29 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
                     return true; 
+                }
+        );
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        resolverMyUser();
+    }
+
+    private void resolverMyUser() {
+        FirebaseUser fbuser = auth.getCurrentUser();
+        firestore.collection("users").document(fbuser.getUid()).get().addOnCompleteListener(
+                dbusertask -> {
+                    DocumentSnapshot snapshot = dbusertask.getResult();
+                    myUser = snapshot.toObject(User.class);
+                    Toast.makeText(this, "Bienvenido "+myUser.getUserName()+"!", Toast.LENGTH_LONG).show();
+
+                    homeFragment.setUser(myUser);
+                    homeFragment.loadFreeThemes();
+                    statisticsFragment.setUser(myUser);
+                    plantsCareFragment.setUser(myUser);
+                    profileFragment.setUser(myUser);
                 }
         );
     }

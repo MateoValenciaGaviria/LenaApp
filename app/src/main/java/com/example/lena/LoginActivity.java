@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
 
     private AppCompatButton loginBtn;
@@ -60,19 +62,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 task -> {
                                     if(task.isSuccessful()){
                                         FirebaseUser fbuser = auth.getCurrentUser();
-                                        firestore.collection("users").document(fbuser.getUid()).get().addOnCompleteListener(
-                                                        dbusertask -> {
-                                                            DocumentSnapshot snapshot = dbusertask.getResult();
-                                                            User user = snapshot.toObject(User.class);
-                                                            if(fbuser.isEmailVerified()){
-                                                                goToUserHomeActivity(user);
-                                                            }else {
-                                                                Toast.makeText(this, "Debes verificar tu cuenta para poder ingresar. Revisa tu correo electrónico!", Toast.LENGTH_LONG).show();
-                                                                auth.signOut();
-                                                            }
 
-                                                        }
-                                                );
+                                        if(fbuser.isEmailVerified()){
+                                            goToUserHomeActivity();
+                                        }else {
+                                            Toast.makeText(this, "Debes verificar tu cuenta para poder ingresar. Revisa tu correo electrónico!", Toast.LENGTH_LONG).show();
+                                            auth.signOut();
+                                        }
+
                                     }else{
                                         Toast.makeText(this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                                     }
@@ -93,9 +90,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void goToUserHomeActivity(User user) {
+    public void goToUserHomeActivity() {
         Intent i = new Intent(this, HomeActivity.class);
-        i.putExtra("myUser", user);
         startActivity(i);
         finish();
     }

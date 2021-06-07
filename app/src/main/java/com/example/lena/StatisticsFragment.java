@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.lena.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class StatisticsFragment extends Fragment {
@@ -19,6 +22,7 @@ public class StatisticsFragment extends Fragment {
     private User myUser;
     private TextView statisticsUserName;
 
+    private FirebaseAuth auth;
     private FirebaseFirestore firestore;
 
     public StatisticsFragment() {
@@ -39,6 +43,7 @@ public class StatisticsFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_statistics, container, false);
 
         firestore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         statisticsUserName = root.findViewById(R.id.statisticsUserNameTV);
 
