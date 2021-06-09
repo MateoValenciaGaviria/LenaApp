@@ -1,7 +1,9 @@
 package com.example.lena;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,12 +18,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private View root;
 
     private User myUser;
     private TextView userName;
+
+    private AppCompatButton editBtn;
 
     private FirebaseAuth auth;
     private FirebaseFirestore firestore;
@@ -46,9 +50,13 @@ public class ProfileFragment extends Fragment {
         firestore = FirebaseFirestore.getInstance();
         auth = FirebaseAuth.getInstance();
 
+        editBtn = root.findViewById(R.id.editWorkingDaysBtn);
+
         userName = root.findViewById(R.id.userNameTV);
 
         userName.setText(myUser.getUserName());
+
+        editBtn.setOnClickListener(this);
 
         return root;
     }
@@ -71,5 +79,15 @@ public class ProfileFragment extends Fragment {
 
     public void setUser(User user){
         this.myUser = user;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.editWorkingDaysBtn:
+                Intent i = new Intent(getContext(), WorkingDayActivity.class);
+                startActivity(i);
+                break;
+        }
     }
 }

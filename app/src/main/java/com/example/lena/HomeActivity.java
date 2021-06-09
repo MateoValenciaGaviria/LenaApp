@@ -18,6 +18,8 @@ import com.tbuonomo.morphbottomnavigation.MorphBottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private boolean firstTime = true;
+
     private HomeFragment homeFragment;
     private StatisticsFragment statisticsFragment;
     private PlantsCareFragment plantsCareFragment;
@@ -86,7 +88,10 @@ public class HomeActivity extends AppCompatActivity {
                 dbusertask -> {
                     DocumentSnapshot snapshot = dbusertask.getResult();
                     myUser = snapshot.toObject(User.class);
-                    Toast.makeText(this, "Bienvenido "+myUser.getUserName()+"!", Toast.LENGTH_LONG).show();
+                    if(firstTime){
+                        Toast.makeText(this, "Bienvenido "+myUser.getUserName()+"!", Toast.LENGTH_LONG).show();
+                        firstTime = false;
+                    }
 
                     homeFragment.setUser(myUser);
                     homeFragment.loadFreeThemes();

@@ -70,16 +70,24 @@ public class HomeFragment extends Fragment {
     }
 
     public void loadFreeThemes(){
-        userThemesAdapter.clear();
+        if(myUser != null){
+            userThemesAdapter.clear();
 
-        ArrayList<Theme> userThemes = new ArrayList<>();
-        userThemes = myUser.getThemes();
+            ArrayList<Theme> userThemes = new ArrayList<>();
+            userThemes = myUser.getThemes();
 
-        Log.e(">>>", userThemes.get(0).getName());
+            Log.e(">>>", userThemes.get(0).getName());
 
-        for (int i = 0; i < userThemes.size(); i++){
-            userThemesAdapter.addTheme(userThemes.get(i));
+            for (int i = 0; i < userThemes.size(); i++){
+                userThemesAdapter.addTheme(userThemes.get(i));
+            }
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadFreeThemes();
     }
 
     public void setUser(User user){

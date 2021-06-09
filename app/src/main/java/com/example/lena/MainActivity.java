@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(() -> {
             try {
                 Thread.sleep(2000);
-                Intent i = new Intent(this, LoginActivity.class);
+                Intent i = new Intent(this, HomeActivity.class);
                 startActivity(i);
                 finish();
             } catch (InterruptedException e) {
