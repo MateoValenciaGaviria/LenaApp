@@ -195,7 +195,7 @@
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/home_white_shape"
+                android:background="@color/transparent_input_white"
                 android:scrollbars="none">
 
                 <LinearLayout

@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.lena.model.User;
@@ -21,6 +22,8 @@ public class PlantsCareFragment extends Fragment implements View.OnClickListener
     private View root;
 
     private User myUser;
+
+    private Button editPlants;
 
     private ImageView imageClickable;
 
@@ -44,8 +47,10 @@ public class PlantsCareFragment extends Fragment implements View.OnClickListener
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_plants_care, container, false);
 
+        editPlants = root.findViewById(R.id.btn_edit_plants);
         imageClickable = root.findViewById(R.id.plantsImageClickable);
 
+        editPlants.setOnClickListener(this);
         imageClickable.setOnClickListener(this);
 
         firestore = FirebaseFirestore.getInstance();
@@ -61,9 +66,13 @@ public class PlantsCareFragment extends Fragment implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.plantsImageClickable:
-                Intent i = new Intent(getContext(), PlantInformationActivity.class);
+            case R.id.btn_edit_plants:
+                Intent i = new Intent(getContext(), EditPlantsActivity.class);
                 startActivity(i);
+                break;
+            case R.id.plantsImageClickable:
+                Intent j = new Intent(getContext(), PlantInformationActivity.class);
+                startActivity(j);
                 break;
         }
     }

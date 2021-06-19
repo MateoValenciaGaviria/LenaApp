@@ -3,6 +3,7 @@ package com.example.lena;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,11 +24,13 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements View.OnClickListener {
 
     private View root;
 
     private User myUser;
+
+    private AppCompatButton editThemes;
 
     private RecyclerView userThemesList;
     private LinearLayoutManager layoutManager;
@@ -58,13 +61,15 @@ public class HomeFragment extends Fragment {
 
         userThemesList = root.findViewById(R.id.user_themes_horizontal);
 
-        //userThemesList.setHasFixedSize(true);
+        editThemes = root.findViewById(R.id.btn_editThemes);
 
         layoutManager = new LinearLayoutManager(getActivity().getApplicationContext(), LinearLayoutManager.HORIZONTAL,false);
         userThemesList.setLayoutManager(layoutManager);
 
         userThemesAdapter = new UserThemesAdapter();
         userThemesList.setAdapter(userThemesAdapter);
+
+        editThemes.setOnClickListener(this);
 
         return root;
     }
@@ -94,4 +99,14 @@ public class HomeFragment extends Fragment {
         this.myUser = user;
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_editThemes:
+                Intent i = new Intent(getContext(), EditThemeActivity.class);
+                startActivity(i);
+                break;
+
+        }
+    }
 }
