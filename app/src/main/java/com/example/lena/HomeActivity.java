@@ -95,6 +95,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     homeFragment.setUser(myUser);
                     homeFragment.loadFreeThemes();
+                    homeFragment.loadGlobalThemes();
                     statisticsFragment.setUser(myUser);
                     plantsCareFragment.setUser(myUser);
                     profileFragment.setUser(myUser);

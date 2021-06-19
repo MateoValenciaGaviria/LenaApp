@@ -10,18 +10,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.GranularRoundedCorners;
+import com.example.lena.model.GlobalThemeView;
 import com.example.lena.model.Theme;
 import com.example.lena.model.ThemeView;
+import com.example.lena.model.User;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
-public class UserThemesAdapter extends RecyclerView.Adapter<ThemeView> {
+public class GlobalThemesAdapter extends RecyclerView.Adapter<GlobalThemeView> {
 
     private ArrayList<Theme> themes;
     private FirebaseFirestore firestore;
 
-    public UserThemesAdapter(){
+    private User myUser;
+
+    public GlobalThemesAdapter(){
         themes = new ArrayList<>();
         firestore = FirebaseFirestore.getInstance();
     }
@@ -33,43 +37,43 @@ public class UserThemesAdapter extends RecyclerView.Adapter<ThemeView> {
 
     @NonNull
     @Override
-    public ThemeView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GlobalThemeView onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         //XML -> View
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View row = inflater.inflate(R.layout.themerow, parent, false);
+        View row = inflater.inflate(R.layout.globalthemerow, parent, false);
         ConstraintLayout rowroot = (ConstraintLayout) row;
-        ThemeView themeView = new ThemeView(rowroot);
-        return themeView;
+        GlobalThemeView globalThemeView = new GlobalThemeView(rowroot, myUser);
+        return globalThemeView;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ThemeView holder, int position) {
+    public void onBindViewHolder(@NonNull GlobalThemeView holder, int position) {
         holder.getName().setText(themes.get(position).getName());
         Glide.with(holder.getRoot()).load(themes.get(position).getImage()).centerCrop().transform(new GranularRoundedCorners(64, 64, 0,0)).into(holder.getImage());
         switch (themes.get(position).getName()){
             case "Water":
-                holder.setNameContainer(0);
+                holder.setGlobalNameContainer(0);
                 break;
             case "Forest":
-                holder.setNameContainer(1);
+                holder.setGlobalNameContainer(1);
                 break;
             case "Mountain":
-                holder.setNameContainer(2);
+                holder.setGlobalNameContainer(2);
                 break;
             case "Iceland":
-                holder.setNameContainer(3);
+                holder.setGlobalNameContainer(3);
                 break;
             case "Dark Forest":
-                holder.setNameContainer(4);
+                holder.setGlobalNameContainer(4);
                 break;
             case "Sunflower":
-                holder.setNameContainer(5);
+                holder.setGlobalNameContainer(5);
                 break;
             case "Nature":
-                holder.setNameContainer(6);
+                holder.setGlobalNameContainer(6);
                 break;
             case "Island":
-                holder.setNameContainer(7);
+                holder.setGlobalNameContainer(7);
                 break;
         }
     }
@@ -82,5 +86,9 @@ public class UserThemesAdapter extends RecyclerView.Adapter<ThemeView> {
     public void clear(){
         themes.clear();
         this.notifyDataSetChanged();
+    }
+
+    public void setUser(User user){
+        this.myUser = user;
     }
 }

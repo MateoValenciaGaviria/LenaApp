@@ -2,24 +2,19 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/themeRowRoot"
-    android:layout_width="116dp"
+    android:layout_width="155dp"
     android:layout_height="wrap_content"
-    android:layout_marginRight="13dp">
+    android:layout_marginBottom="20dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cardContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -29,9 +24,9 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/themeImageIV"
+                    android:id="@+id/globalThemeImageIV"
                     android:layout_width="match_parent"
-                    android:layout_height="102dp"
+                    android:layout_height="156dp"
                     android:adjustViewBounds="false"
                     android:scaleType="matrix"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -42,27 +37,34 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/themeNameContainer"
+                android:id="@+id/globalThemeNameContainer"
                 android:layout_width="match_parent"
-                android:layout_height="36dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent">
+                android:layout_height="55dp">
 
                 <TextView
-                    android:id="@+id/themeNameTV"
+                    android:id="@+id/globalThemeNameTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/nunito_extrabold"
+                    android:layout_marginStart="15dp"
+                    android:fontFamily="@font/nunito_bold"
                     android:text="ThemeName"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/likeGlobalThemeBtn"
+                    android:layout_width="20dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="#00FFFFFF"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/whiteheart" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-
         </LinearLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

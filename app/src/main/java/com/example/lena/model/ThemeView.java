@@ -39,13 +39,28 @@ public class ThemeView extends RecyclerView.ViewHolder{
     public void setNameContainer(int result){
         switch (result){
             case 0:
-                nameContainer.setBackgroundResource(R.drawable.mountain_theme_card_bg);
+                nameContainer.setBackgroundResource(R.drawable.water_theme_card_bg);
                 break;
             case 1:
-                nameContainer.setBackgroundResource(R.drawable.sunflower_theme_card_bg);
+                nameContainer.setBackgroundResource(R.drawable.forest_theme_card_bg);
                 break;
             case 2:
-                nameContainer.setBackgroundResource(R.drawable.forest_theme_card_bg);
+                nameContainer.setBackgroundResource(R.drawable.mountain_theme_card_bg);
+                break;
+            case 3:
+                nameContainer.setBackgroundResource(R.drawable.iceland_theme_card_bg);
+                break;
+            case 4:
+                nameContainer.setBackgroundResource(R.drawable.darkforest_theme_card_bg);
+                break;
+            case 5:
+                nameContainer.setBackgroundResource(R.drawable.sunflower_theme_card_bg);
+                break;
+            case 6:
+                nameContainer.setBackgroundResource(R.drawable.nature_theme_card_bg);
+                break;
+            case 7:
+                nameContainer.setBackgroundResource(R.drawable.island_theme_card_bg);
                 break;
 
         }
