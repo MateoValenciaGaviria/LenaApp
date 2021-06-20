@@ -10,6 +10,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFff</color>
     <color name="transparent_input_white">#80FFFFff</color>
+    <color name="transparent_dialog_white">#CBFFFFFF</color>
     <color name="transparent_bg_white">#4DFFFFff</color>
     <color name="transparent_bg_black">#4D000000</color>
     <color name="red">#E53131</color>

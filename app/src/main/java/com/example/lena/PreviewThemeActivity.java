@@ -29,8 +29,9 @@ public class PreviewThemeActivity extends AppCompatActivity implements View.OnCl
         deleteTheme = findViewById(R.id.deleteThemePreviewBtn);
 
         View view = getLayoutInflater().inflate(R.layout.theme_delete_dialog, null);
-        dialog = new Dialog(this, android.R.style.Theme_DeviceDefault_Light_NoActionBar_Fullscreen);
+        dialog = new Dialog(this, android.R.style.Theme_DeviceDefault_Light_NoActionBar);
         dialog.setContentView(view);
+        dialog.getWindow().setBackgroundDrawableResource(R.color.transparent_dialog_white);
 
         dialogConstraintLayout = view.findViewById(R.id.delete_theme_dialog);
 
@@ -57,6 +58,7 @@ public class PreviewThemeActivity extends AppCompatActivity implements View.OnCl
                 dialog.dismiss();
                 break;
             case R.id.deleteThemeDialogBtn:
+                dialog.dismiss();
                 Toast.makeText(this, "Se ha eliminado el tema", Toast.LENGTH_LONG).show();
                 break;
         }

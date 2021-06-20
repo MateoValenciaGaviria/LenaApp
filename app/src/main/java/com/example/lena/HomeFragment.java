@@ -48,6 +48,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private FirebaseAuth auth;
     private FirebaseFirestore firestore;
 
+    private boolean firstTime;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -87,6 +89,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         editThemes.setOnClickListener(this);
 
+        firstTime = false;
+
         firestore.collection("users").document(auth.getCurrentUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
@@ -98,6 +102,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
                 if (snapshot != null && snapshot.exists()) {
                     Log.e("TAG2", "Current data: " + snapshot.getData());
+                    if(!firstTime){
+                        loadFreeThemes();
+                        firstTime = true;
+                    }
                 } else {
                     Log.e("TAG3", "Current data: null");
                 }
@@ -110,8 +118,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     public void loadFreeThemes(){
         if(myUser != null){
-            userThemesList.setAdapter(userThemesAdapter);
-
+            userThemesAdapter.clear();
             firestore.collection("users").document(myUser.getId()).get().addOnCompleteListener(
                 task -> {
                     if(task.isSuccessful()){
@@ -130,7 +137,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     public void loadGlobalThemes(){
         if(myUser != null){
-            globalThemesList.setAdapter(globalThemesAdapter);
             globalThemesAdapter.setUser(myUser);
             globalThemesAdapter.clear();
 
@@ -154,8 +160,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        loadFreeThemes();
         loadGlobalThemes();
+        firstTime = false;
     }
 
     public void setUser(User user){

@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/editThemesBackBtn"
             android:layout_width="27dp"
             android:layout_height="27dp"
             android:layout_marginStart="20dp"
@@ -67,7 +67,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/textView39"
+        android:id="@+id/themesCountTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -79,12 +79,13 @@
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout16" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/edit_themes_RV"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/constraintLayout17"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout17"
-        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+        app:layout_constraintTop_toBottomOf="@+id/themesCountTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

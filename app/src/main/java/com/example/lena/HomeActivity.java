@@ -31,7 +31,6 @@ public class HomeActivity extends AppCompatActivity {
     private FirebaseAuth auth;
     private FirebaseFirestore firestore;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,15 +89,14 @@ public class HomeActivity extends AppCompatActivity {
                     myUser = snapshot.toObject(User.class);
                     if(firstTime){
                         Toast.makeText(this, "Bienvenido "+myUser.getUserName()+"!", Toast.LENGTH_LONG).show();
+                        homeFragment.setUser(myUser);
+                        homeFragment.loadFreeThemes();
+                        homeFragment.loadGlobalThemes();
+                        statisticsFragment.setUser(myUser);
+                        plantsCareFragment.setUser(myUser);
+                        profileFragment.setUser(myUser);
                         firstTime = false;
                     }
-
-                    homeFragment.setUser(myUser);
-                    homeFragment.loadFreeThemes();
-                    homeFragment.loadGlobalThemes();
-                    statisticsFragment.setUser(myUser);
-                    plantsCareFragment.setUser(myUser);
-                    profileFragment.setUser(myUser);
                 }
         );
     }

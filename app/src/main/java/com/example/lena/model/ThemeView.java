@@ -1,5 +1,6 @@
 package com.example.lena.model;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -7,9 +8,10 @@ import android.widget.TextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lena.PreviewThemeActivity;
 import com.example.lena.R;
 
-public class ThemeView extends RecyclerView.ViewHolder{
+public class ThemeView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     private ConstraintLayout root;
     private TextView name;
@@ -22,6 +24,8 @@ public class ThemeView extends RecyclerView.ViewHolder{
         name = root.findViewById(R.id.themeNameTV);
         image = root.findViewById(R.id.themeImageIV);
         nameContainer = root.findViewById(R.id.themeNameContainer);
+
+        image.setOnClickListener(this);
     }
 
     public ConstraintLayout getRoot() {
@@ -63,6 +67,17 @@ public class ThemeView extends RecyclerView.ViewHolder{
                 nameContainer.setBackgroundResource(R.drawable.island_theme_card_bg);
                 break;
 
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.themeImageIV:
+                Intent i = new Intent(getRoot().getContext(), PreviewThemeActivity.class);
+                i.putExtra("name", name.getText().toString());
+                getRoot().getContext().startActivity(i);
+                break;
         }
     }
 }
