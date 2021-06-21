@@ -2,6 +2,7 @@ package com.example.lena.model;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.lena.HomeActivity;
 import com.example.lena.PreviewThemeActivity;
 import com.example.lena.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+
+import java.util.ArrayList;
 
 public class EditThemeView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -29,12 +36,20 @@ public class EditThemeView extends RecyclerView.ViewHolder implements View.OnCli
     private Button dismissDialogBtn;
     private Button deleteThemeDialogBtn;
 
+    private FirebaseFirestore firestore;
+    private FirebaseAuth auth;
+
+    private Theme currentTheme;
+
     public EditThemeView(ConstraintLayout root) {
         super(root);
         this.root = root;
         name = root.findViewById(R.id.editThemeName);
         image = root.findViewById(R.id.editThemeIV);
         deleteBtn = root.findViewById(R.id.editThemeDeleteBtn);
+
+        firestore = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
 
         LayoutInflater inflater = (LayoutInflater) getRoot().getContext().getSystemService( getRoot().getContext().LAYOUT_INFLATER_SERVICE );
 
@@ -88,10 +103,39 @@ public class EditThemeView extends RecyclerView.ViewHolder implements View.OnCli
                 dialog.dismiss();
                 break;
             case R.id.deleteThemeDialogBtn:
+                loadTheme(name.getText().toString());
                 dialog.dismiss();
-                Toast.makeText(getRoot().getContext(), "Se ha eliminado el tema", Toast.LENGTH_LONG).show();
                 break;
 
         }
+    }
+
+    public void loadTheme(String name){
+        firestore.collection("themes").whereEqualTo("name", name).get().addOnCompleteListener(
+                task1 -> {
+                    if(task1.isSuccessful()){
+                        ArrayList<Theme> globalThemes = new ArrayList<>();
+                        for (QueryDocumentSnapshot documentSnapshot : task1.getResult()){
+                            Theme currentTheme = documentSnapshot.toObject(Theme.class);
+                            globalThemes.add(currentTheme);
+                        }
+                        if(globalThemes.size() != 0){
+                            currentTheme = globalThemes.get(0);
+                            deleteTheme();
+                        }
+                    }
+                }
+        );
+    }
+
+    public void deleteTheme(){
+        firestore.collection("users").document(auth.getCurrentUser().getUid())
+                .update("themes", FieldValue.arrayRemove(currentTheme)).addOnCompleteListener(
+                task -> {
+                    if(task.isSuccessful()){
+                        Toast.makeText(getRoot().getContext(), "Se ha eliminado el tema "+currentTheme.getName(), Toast.LENGTH_LONG).show();
+                    }
+                }
+        );
     }
 }

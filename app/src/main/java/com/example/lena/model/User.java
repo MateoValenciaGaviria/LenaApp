@@ -11,6 +11,7 @@ public class User implements Serializable {
     private String email;
     private String photoId;
     private ArrayList<Theme> themes;
+    private String currentTheme;
 
     public User(){
 
@@ -22,6 +23,7 @@ public class User implements Serializable {
         this.email = email;
         this.themes = new ArrayList<>();
         loadFreeThemes();
+        this.currentTheme = "Mountain";
     }
 
     public void loadFreeThemes(){
@@ -71,5 +73,13 @@ public class User implements Serializable {
 
     public void setThemes(ArrayList<Theme> themes) {
         this.themes = themes;
+    }
+
+    public String getCurrentTheme() {
+        return currentTheme;
+    }
+
+    public void setCurrentTheme(String currentTheme) {
+        this.currentTheme = currentTheme;
     }
 }

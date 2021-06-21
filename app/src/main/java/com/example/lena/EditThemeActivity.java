@@ -1,11 +1,13 @@
 package com.example.lena;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -14,7 +16,9 @@ import com.example.lena.model.Theme;
 import com.example.lena.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import java.util.ArrayList;
 
@@ -52,11 +56,30 @@ public class EditThemeActivity extends AppCompatActivity implements View.OnClick
 
         backBtn.setOnClickListener(this);
         myUser = new User(auth.getCurrentUser().getUid(), "Prueba", "prueba@gmail.com");
-        loadUserThemes();
+
+        firestore.collection("users").document(auth.getCurrentUser().getUid()).addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.e("TAG1", "Listen failed.", e);
+                    return;
+                }
+
+                if (snapshot != null && snapshot.exists()) {
+                    Log.e("TAG2", "Current data: " + snapshot.getData());
+                    loadUserThemes();
+                } else {
+                    Log.e("TAG3", "Current data: null");
+                }
+
+            }
+        });
     }
 
     public void loadUserThemes(){
         if(myUser != null){
+            userEditThemesAdapter.clear();
             firestore.collection("users").document(myUser.getId()).get().addOnCompleteListener(
                     task -> {
                         if(task.isSuccessful()){
